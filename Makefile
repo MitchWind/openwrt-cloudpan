@@ -12,7 +12,7 @@ PKG_SOURCE_PROTO:=git
 #PKG_SOURCE_VERSION:=7ead4d1c08bd94045ae012ce2c35d67d3678b74e
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 PKG_SOURCE_URL:=https://github.com/tickstep/cloudpan189-go
-PKG_MIRROR_HASH:=skip
+PKG_MIRROR_HASH:=c2ca02ef4d91250772553994e4a59962dc4ec559f44771cefba2b0663668fba1
 
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
@@ -24,7 +24,6 @@ PKG_CONFIG_DEPENDS:= \
 	CONFIG_CLOUDPAN_GOPROXY \
 	CONFIG_CLOUDPAN_UPX
 GO_PKG:=github.com/tickstep/cloudpan189-go
-GO_PKG_BUILD_PKG:=github.com/tickstep/cloudpan189-go
 GO_PKG_LDFLAGS:=-s -w
 
 include $(INCLUDE_DIR)/package.mk
