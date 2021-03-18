@@ -1,16 +1,15 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=cloudpan189-go
-PKG_VERSION:=0.0.9
+PKG_NAME:=cloudpan189
+PKG_VERSION:=0.1.0dev
 PKG_RELEASE:=1
 
 PKG_LICENSE:=GPLv3
 PKG_LICENSE_FILES:=LICENSE
 
 PKG_SOURCE_PROTO:=git
-#PKG_SOURCE_VERSION:=7ead4d1c08bd94045ae012ce2c35d67d3678b74e
-PKG_SOURCE_VERSION:=v$(PKG_VERSION)
+PKG_SOURCE_VERSION:=7ead4d1c08bd94045ae012ce2c35d67d3678b74e
 PKG_SOURCE_URL:=https://github.com/tickstep/cloudpan189-go
 PKG_MIRROR_HASH:=d75b5e1e154dd3c4741542a44dcbf01762ebd4dff2df1d343ba8e42ff7a409ab
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -26,7 +25,7 @@ PKG_CONFIG_DEPENDS:= \
 
 GO_PKG:=github.com/tickstep/cloudpan189-go
 GO_PKG_LDFLAGS:=-s -w
-
+GO_PKG_LDFLAGS_X:=main.Version=$(PKG_VERSION)
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
@@ -73,7 +72,7 @@ endef
 define Build/Compile
 endef
 define Package/$(PKG_NAME)/install
-	$(call GoPackage/Package/Install/Bin,$(1))	
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 endef
 $(eval $(call GoBinPackage,$(PKG_NAME)))
 $(eval $(call BuildPackage,$(PKG_NAME)))
