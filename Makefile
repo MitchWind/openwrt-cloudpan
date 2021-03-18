@@ -16,6 +16,17 @@ PKG_MIRROR_HASH:=skip
 
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
+PKG_BUILD_DEPENDS:=golang/host
+PKG_BUILD_PARALLEL:=1
+PKG_USE_MIPS16:=0
+
+PKG_CONFIG_DEPENDS:= \
+	CONFIG_CLOUDPAN_GOPROXY \
+	CONFIG_CLOUDPAN_UPX
+	
+GO_PKG:=github.com/tickstep/cloudpan189-go
+GO_PKG_LDFLAGS:=-s -w
+
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
@@ -50,6 +61,14 @@ define Package/$(PKG_NAME)/description
 cloud disk command line client
 endef
 
+define Build/Compile
+	$(eval GO_PKG_BUILD_PKG:=$(GO_PKG))
+	$(call GoPackage/Build/Compile)
+ifeq ($(CONFIG_CLOUDPAN_UPX),y)
+	$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/cloud || true
+endif
+endef
+
 define Build/Configure
 endef
 
@@ -60,5 +79,5 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/cloud $(1)/opt/cloud
 	$(LN) cloud $(1)/opt/cloud/cloud
 endef
-
+$(eval $(call GoBinPackage,$(PKG_NAME)))
 $(eval $(call BuildPackage,$(PKG_NAME)))
