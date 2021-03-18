@@ -72,7 +72,7 @@ endef
 define Build/Compile
 endef
 define Package/$(PKG_NAME)/install
-	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	
 endef
 $(eval $(call GoBinPackage,$(PKG_NAME)))
 $(eval $(call BuildPackage,$(PKG_NAME)))
