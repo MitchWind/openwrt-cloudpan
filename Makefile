@@ -23,10 +23,6 @@ PKG_CONFIG_DEPENDS:= \
 
 GO_PKG:=github.com/tickstep/cloudpan189-go
 GO_PKG_LDFLAGS:=-s -w
-GO_PKG_LDFLAGS_X:= \
-	$(GO_PKG)/core.version=$(PKG_VERSION) \
-	$(GO_PKG)/core.codename=OpenWrt
-
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
