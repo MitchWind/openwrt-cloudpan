@@ -72,9 +72,10 @@ endef
 define Build/Compile
 endef
 define Package/$(PKG_NAME)/install
-	$(INSTALL_DIR) $(1)/opt/cloud
-	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/cloud $(1)/opt/cloud
-	$(LN) cloud $(1)/opt/cloud/cloud
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/main $(1)/usr/bin/xray
+	$(LN) xray $(1)/usr/bin/v2ray
 endef
 $(eval $(call GoBinPackage,$(PKG_NAME)))
 $(eval $(call BuildPackage,$(PKG_NAME)))
