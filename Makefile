@@ -77,5 +77,5 @@ define Package/$(PKG_NAME)/install
 	$(LN) cloud $(1)/opt/cloud/cloud
 endef
 
-$(eval $(call GoBinPackage,cloudpan189))
-$(eval $(call BuildPackage,cloudpan189))
+$(eval $(call GoBinPackage,$(PKG_NAME)))
+$(eval $(call BuildPackage,$(PKG_NAME)))
