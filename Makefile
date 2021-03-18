@@ -1,8 +1,8 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=cloudpan189-go
-PKG_VERSION:=0.0.9
+PKG_NAME:=xray-core
+PKG_VERSION:=1.4.0
 PKG_RELEASE:=1
 
 PKG_LICENSE:=GPLv3
@@ -11,11 +11,11 @@ PKG_LICENSE_FILES:=LICENSE
 PKG_SOURCE_PROTO:=git
 #PKG_SOURCE_VERSION:=7ead4d1c08bd94045ae012ce2c35d67d3678b74e
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
-PKG_SOURCE_URL:=https://github.com/tickstep/cloudpan189-go
-PKG_MIRROR_HASH:=d75b5e1e154dd3c4741542a44dcbf01762ebd4dff2df1d343ba8e42ff7a409ab
+PKG_SOURCE_URL:=https://github.com/XTLS/Xray-core.git
+PKG_MIRROR_HASH:=09fcfec0b6e9362d36fb358fe781431a6c2baae71a7864eaeb1379977aa22ca9
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 
-PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
-
+PKG_BUILD_DIR:=$(BUILD_DIR)/Xray-core-$(PKG_VERSION)
 PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
@@ -24,7 +24,7 @@ PKG_CONFIG_DEPENDS:= \
 	CONFIG_CLOUDPAN_GOPROXY \
 	CONFIG_CLOUDPAN_UPX
 
-GO_PKG:=github.com/tickstep/cloudpan189-go
+GO_PKG:=github.com/XTLS/Xray-core
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
