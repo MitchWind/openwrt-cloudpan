@@ -19,14 +19,15 @@ PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 include $(INCLUDE_DIR)/package.mk
 
 define Package/$(PKG_NAME)/config
-menu "Configuration"
+menu "Cloud Configuration"
+	depends on config
+
+config PACKAGE_$(PKG_NAME)_GOPROXY
+	bool "Compiling with GOPROXY proxy"
+	default n
 	
-config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks
-	bool "Include Shadowsocks"
-	default y
-	
-config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Server
-	bool "Include Shadowsocks Server"
+config PACKAGE_$(PKG_NAME)_UPX
+	bool "Compress executable files with UPX"
 	default y
 
 endmenu
