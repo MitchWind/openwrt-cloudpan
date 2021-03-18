@@ -29,7 +29,7 @@ GO_PKG_LDFLAGS:=-s -w
 GO_PKG_LDFLAGS_X:= \
 	$(GO_PKG)/core.build=OpenWrt \
 	$(GO_PKG)/core.version=$(PKG_VERSION)
-	
+
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
@@ -73,10 +73,11 @@ endef
 define Build/Configure
 endef
 
-define Build/Compile
-endef
 define Package/$(PKG_NAME)/install
-	$(call GoPackage/Package/Install/Bin,$(1))
+	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
+	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/main $(1)/usr/bin/xray
+	$(LN) xray $(1)/usr/bin/v2ray
 endef
 $(eval $(call GoBinPackage,$(PKG_NAME)))
 $(eval $(call BuildPackage,$(PKG_NAME)))
