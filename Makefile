@@ -17,9 +17,10 @@ PKG_MIRROR_HASH:=skip
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
 include $(INCLUDE_DIR)/package.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/$(PKG_NAME)/config
-menu "Cloud Configuration"
+menu "Configuration"
 
 config CONFIG_CLOUDPAN_GOPROXY
 	bool "Compiling with GOPROXY proxy"
@@ -31,6 +32,11 @@ config CONFIG_CLOUDPAN_UPX
 
 endmenu
 endef
+
+ifeq ($(CONFIG_CLOUDPAN_GOPROXY),y)
+export GO111MODULE=on
+export GOPROXY=https://goproxy.io
+endif
 
 define Package/$(PKG_NAME)
   TITLE:=Cloud Disk CLI
@@ -49,10 +55,10 @@ endef
 
 define Build/Compile
 endef
-
 define Package/$(PKG_NAME)/install
-	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(INSTALL_BIN) ./files/$(PKG_NAME) $(1)/etc/uci-defaults/99-$(PKG_NAME)
+	$(INSTALL_DIR) $(1)/opt/cloud
+	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/cloud $(1)/opt/cloud
+	$(LN) cloud $(1)/opt/cloud/cloud
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
