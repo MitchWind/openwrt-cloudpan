@@ -39,7 +39,7 @@ config CONFIG_CLOUDPAN_GOPROXY
 	
 config CONFIG_CLOUDPAN_UPX
 	bool "Compress executable files with UPX"
-	default y
+	default n
 
 endmenu
 endef
@@ -62,7 +62,6 @@ cloud disk command line client
 endef
 
 define Build/Compile
-	$(eval GO_PKG_BUILD_PKG:=$(GO_PKG))
 	$(call GoPackage/Build/Compile)
 ifeq ($(CONFIG_CLOUDPAN_UPX),y)
 	$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/cloud || true
