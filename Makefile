@@ -20,7 +20,6 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/$(PKG_NAME)/config
 menu "Cloud Configuration"
-	depends on config
 
 config PACKAGE_$(PKG_NAME)_GOPROXY
 	bool "Compiling with GOPROXY proxy"
