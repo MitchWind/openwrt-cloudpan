@@ -32,7 +32,6 @@ define Package/$(PKG_NAME)
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Cloud
-  DEPENDS:=$(GO_ARCH_DEPENDS) +ca-certificates
 endef
 
 define Package/$(PKG_NAME)/description
@@ -73,5 +72,5 @@ define Package/$(PKG_NAME)/install
 	$(LN) cloud $(1)/opt/cloud/cloud
 endef
 
-$(eval $(call GoBinPackage,$(PKG_NAME)))
+
 $(eval $(call BuildPackage,$(PKG_NAME)))
