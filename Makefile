@@ -2,7 +2,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cloudpan189
-PKG_VERSION:=0.1.0dev
+PKG_VERSION:=0.1.0
 PKG_RELEASE:=1
 
 PKG_LICENSE:=GPLv3
@@ -70,7 +70,7 @@ define Build/Configure
 endef
 
 define Package/$(PKG_NAME)/install
-	$(call GoPackage/Package/Install/Bin,$(1))
+	#$(call GoPackage/Package/Install/Bin,$(1))
 endef
 $(eval $(call GoBinPackage,$(PKG_NAME)))
 $(eval $(call BuildPackage,$(PKG_NAME)))
