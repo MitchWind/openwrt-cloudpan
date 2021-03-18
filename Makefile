@@ -54,7 +54,6 @@ define Package/$(PKG_NAME)
   SECTION:=luci
   CATEGORY:=LuCI
   PKGARCH:=all
-  DEPENDS:=+luci-base
 endef
 
 define Package/$(PKG_NAME)/description
