@@ -25,21 +25,6 @@ define Package/$(PKG_NAME)/description
 cloud disk command line client
 endef
 
-define Package/$(PKG_NAME)/config
-menu "Cloud Configuration"
-	depends on config
-
-config CONFIG_CLOUDPAN_GOPROXY
-	bool "Compiling with GOPROXY proxy"
-	default n
-	
-config CONFIG_CLOUDPAN_UPX
-	bool "Compress executable files with UPX"
-	default y
- 
-endmenu
-endef
-
 define Build/Configure
 endef
 
