@@ -21,11 +21,11 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)/config
 menu "Cloud Configuration"
 
-config PACKAGE_$(PKG_NAME)_GOPROXY
+config CONFIG_CLOUDPAN_GOPROXY
 	bool "Compiling with GOPROXY proxy"
 	default n
 	
-config PACKAGE_$(PKG_NAME)_UPX
+config CONFIG_CLOUDPAN_UPX
 	bool "Compress executable files with UPX"
 	default y
 
@@ -36,7 +36,8 @@ define Package/$(PKG_NAME)
   TITLE:=Cloud Disk CLI
   SECTION:=luci
   CATEGORY:=LuCI
-  SUBMENU:=Cloud
+  PKGARCH:=all
+  DEPENDS:=+luci-base
 endef
 
 define Package/$(PKG_NAME)/description
