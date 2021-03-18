@@ -18,10 +18,24 @@ PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
 
 include $(INCLUDE_DIR)/package.mk
 
+define Package/$(PKG_NAME)/config
+menu "Configuration"
+	
+config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks
+	bool "Include Shadowsocks"
+	default y
+	
+config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Server
+	bool "Include Shadowsocks Server"
+	default y
+
+endmenu
+endef
+
 define Package/$(PKG_NAME)
   TITLE:=Cloud Disk CLI
-  SECTION:=net
-  CATEGORY:=Network
+  SECTION:=luci
+  CATEGORY:=LuCI
   SUBMENU:=Cloud
 endef
 
