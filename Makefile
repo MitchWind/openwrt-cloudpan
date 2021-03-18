@@ -25,6 +25,7 @@ PKG_CONFIG_DEPENDS:= \
 	CONFIG_CLOUDPAN_UPX
 
 GO_PKG:=github.com/tickstep/cloudpan189-go
+GO_PKG_LDFLAGS:=-s -w
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
