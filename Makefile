@@ -7,8 +7,7 @@ PKG_RELEASE:=1
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 PKG_SOURCE_URL:=https://github.com/tickstep/cloudpan189-go
-PKG_SOURCE_VERSION:=697d5ae2716be5d040348ae09eab53894fc6d02a
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_MIRROR_HASH:=skip
 
 PKG_LICENSE:=Apache-2.0
@@ -78,5 +77,5 @@ define Package/$(PKG_NAME)/install
 	$(LN) cloud $(1)/opt/cloud/cloud
 endef
 
-$(eval $(call GoBinPackage,$(PKG_NAME)))
-$(eval $(call BuildPackage,$(PKG_NAME)))
+$(eval $(call GoBinPackage,cloudpan189))
+$(eval $(call BuildPackage,cloudpan189))
